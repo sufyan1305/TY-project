@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import dev from '../../../assets/dev_icon.jpeg'
 
 function Navbar() {
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark " data-bs-theme="dark">
+            <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark " data-bs-theme="dark" >
                 <div className="container-fluid">
                     <Link className="navbar-brand fw-bold fs-4" to="/dashboard">ThekaCoffee</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,11 +13,31 @@ function Navbar() {
                     </button>
                     <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 
-                    <i className="fa-solid fa-bell fa-xl me-3" style={{color:"white"}}></i>
-                        <form className="d-flex " role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+                        <i className="fa-solid fa-bell fa-xl me-3  cursor-pointer " style={{ color: "white" }}></i>
+                        <div className="">
+                            <form role="search" method="get" className="search-form" action="">
+                                <label>
+                                    <i className="fa-solid fa-magnifying-glass cursor-pointer fa-xl icn " style={{ color: "white" }}
+                                    ></i>
+                                    <input type="text" className="search-field" placeholder="Search …" name="s" title="Search for:" />
+                                </label>
+                                <input type="submit" className="search-submit" value="Search" />
+                            </form>
+                        </div>
+
+                        <div className="dropdown" >
+                            <Link className="btn btn-secondary dropdown-toggle me-3 ms-3 border border-3" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src={dev} alt="" height={30} width={40} className='dev_round'/>
+                                Dropdown link
+                            </Link>
+
+                            <ul className="dropdown-menu" >
+                                <li><Link className="dropdown-item" href="#">Action</Link></li>
+                                <li><Link className="dropdown-item" href="#">Another action</Link></li>
+                                <li><Link className="dropdown-item" href="#">Something else here</Link></li>
+                                <li><Link className="dropdown-item" href="#">Log out</Link></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </nav>

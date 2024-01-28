@@ -180,6 +180,64 @@ button:hover {
   transition: all ease 0.5s;
 }
 
-a:hover {
+.cursor-pointer{
+  cursor: pointer;
+}
+/* a:hover {
   text-decoration: underline;
+} */
+
+/* Search button */
+
+
+.search-form {
+  right: 200px;
+  top: 200px;
+}
+
+.search-field {
+  background-color: transparent;
+  /* background-image: url(https://wp-themes.com/wp-content/themes/twentythirteen/images/search-icon.png); */
+  /* background-image: url('./assets/search_icon.jpg'); */
+  background-position: 5px center;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  
+  margin: 3px 0;
+  margin-right:-20px;
+  padding: 0 0 0 24px;
+  position: relative;
+  -webkit-transition: width 400ms ease, background 400ms ease;
+  transition: width 400ms ease, background 400ms ease;
+  width: 0px;
+  cursor: pointer;
+}
+
+.search-field:focus {
+  background-color: rgb(237, 232, 232);
+  border: 2px solid transparent;
+  color: black;
+  cursor: text;
+  outline: 0;
+  width: 250px;
+  /* color: #fff; */
+  /* display: none; */
+  /* margin-left: -1.6vw; */
+  /* z-index: 2; */
+  border-radius: 6px;
+  margin-right: 2px;
+
+}
+
+.search-form .search-submit {
+  display: none;
+}
+
+.dev_round{
+  /* padding-right: 15px; */
+  border-radius: 50%;
+  margin-right: 15px;
 }
