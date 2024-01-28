@@ -17,16 +17,16 @@ export default function LoginForm() {
 
                 <div className="formlogin">
                     <form action="" method='POST'>
-                        <input type="text" name="" id="" placeholder='Enter your Username' />
+                        <input type="text" name="username" id="" placeholder='Enter your Username' />
                         <br />
-                        <input type="password" name="" id="" placeholder='Enter your password' />
+                        <input type="password" name="password" id="" placeholder='Enter your password' />
                         <br />
                         <div className="forgot">
 
                             <Link to="/forgot" >Forgot Password ?</Link>
                         </div>
                         <br />
-                        <button type="submit">Submit</button>
+                        <button type="submit" onClick={(e)=> e.preventDefault()}>Submit</button>
                     </form>
                 </div>
 

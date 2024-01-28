@@ -4,17 +4,16 @@
   box-sizing: border-box;
 }
 
-body {
+.bg_color {
   background-color: #2F3640;
 }
 
-.d-flex {
+.d-flex_another {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  /* overflow: hidden; */
 }
 
 .container_main {
@@ -135,7 +134,7 @@ body {
 }
 
 /* CSS */
-button {
+#login_submit {
   margin-top: 10px;
   background: white;
   border-radius: 999px;

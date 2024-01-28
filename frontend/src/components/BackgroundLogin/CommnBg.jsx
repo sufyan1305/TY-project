@@ -7,7 +7,7 @@ import { Outlet } from 'react-router-dom';
 export default function CommnBg() {
     return (
         <>
-            <div className="d-flex">
+            <div className="d-flex_another bg_color">
 
                 <div className="container_main">
                     <div className="container-left">
