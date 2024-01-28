@@ -17,7 +17,7 @@ body {
   /* overflow: hidden; */
 }
 
-.container {
+.container_main {
   display: flex;
   height: 80vh;
   width: 65vw;
@@ -106,6 +106,16 @@ body {
   padding-left: 5px;
 }
 
+#otp {
+  margin: 10px;
+  width: 40%;
+  height: 4.4vh;
+  border-radius: 7px;
+  background-color: #E8E5E4;
+  font-size: 1.1rem;
+  padding-left: 5px;
+}
+
 ::-webkit-input-placeholder {
   text-align: center;
 }
@@ -140,12 +150,30 @@ button {
   line-height: 25px;
   opacity: 1;
   outline: 0 solid transparent;
-  padding: 8px 25px;
+  padding: 10px 35px;
   -webkit-user-select: none;
   user-select: none;
   touch-action: manipulation;
   word-break: break-word;
   border: 0;
+}
+
+#send_otp {
+  width: 28%;
+  padding: 6px 1px !important;
+}
+
+#new_pass {
+  text-align: center;
+  color: white;
+}
+
+#setnewpass {
+  padding: 5px 15px;
+}
+
+#submit_form {
+  margin-top: 4vh;
 }
 
 button:hover {
