@@ -14,7 +14,7 @@ const con = mysql.createConnection({
 
 app.use(cors());
 app.use(express.json());
-connection.connect()
+// connection.connect()
 
 
 
@@ -23,11 +23,13 @@ connection.connect()
   //   res.send('Hello World!')
   // })
   
-  app.get('/',(req,res)=>{
-    res.json({message:"Connected...."})
+  
+  app.get('/api',(req,res)=>{
+    return res.json({message:"Connected...."})
   })
   
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
   })
-  connection.end()
+  // connection.end()
+  

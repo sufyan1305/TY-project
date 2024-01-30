@@ -1,13 +1,24 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { Link } from 'react-router-dom';
 import dev from '../../../assets/dev_icon.jpeg'
+import axios from 'axios'
 
 function Navbar() {
+   
+    const [data, setdata] = useState({})
+    useEffect(() => {
+      axios.get("http://localhost:3000/api")
+      .then((res)=> setdata(res.data))
+    }, [])
+    
+    
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark " data-bs-theme="dark" >
                 <div className="container-fluid">
-                    <Link className="navbar-brand fw-bold fs-4" to="/dashboard">ThekaCoffee</Link>
+                    <Link className="navbar-brand fw-bold fs-4" to="/dashboard">ThekaCoffee 
+                    {data.message}
+                    </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
