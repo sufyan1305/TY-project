@@ -1,23 +1,23 @@
-import React,{useEffect,useState} from 'react'
+// import React,{useEffect,useState} from 'react'
 import { Link } from 'react-router-dom';
 import dev from '../../../assets/dev_icon.jpeg'
-import axios from 'axios'
+// import axios from 'axios'
 
 function Navbar() {
-   
-    const [data, setdata] = useState({})
-    useEffect(() => {
-      axios.get("http://localhost:3000/api")
-      .then((res)=> setdata(res.data))
-    }, [])
-    
-    
+
+    // const [data, setdata] = useState({})
+    // useEffect(() => {
+    //   axios.get("http://localhost:3000/api")
+    //   .then((res)=> setdata(res.data))
+    // }, [])
+
+
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark " data-bs-theme="dark" >
+            <nav className="navbar navbar-expand-lg bg-body-tertiary bg_clr" data-bs-theme="dark" style={{backgroundColor:"#5A595E"}} >
                 <div className="container-fluid">
-                    <Link className="navbar-brand fw-bold fs-4" to="/dashboard">ThekaCoffee 
-                    {data.message}
+                    <Link className="navbar-brand fw-bold fs-4" to="/dashboard">ThekaCoffee
+                        {/* {data.message} */}
                     </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -36,17 +36,17 @@ function Navbar() {
                             </form>
                         </div>
 
-                        <div className="dropdown" >
-                            <Link className="btn btn-secondary dropdown-toggle me-3 ms-3 border border-3" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src={dev} alt="" height={30} width={40} className='dev_round'/>
+                        <div className="dropdown d-flex justify-content-center" >
+                            <Link className="btn btn-secondary dropdown-toggle me-3 ms-3 border border-3 text-black bg-light" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src={dev} alt="" height={30} width={40} className='dev_round' />
                                 Dropdown link
                             </Link>
 
                             <ul className="dropdown-menu" >
-                                <li><Link className="dropdown-item" href="#">Action</Link></li>
-                                <li><Link className="dropdown-item" href="#">Another action</Link></li>
-                                <li><Link className="dropdown-item" href="#">Something else here</Link></li>
-                                <li><Link className="dropdown-item" href="#">Log out</Link></li>
+                                <li><Link className="dropdown-item" to="#">Action</Link></li>
+                                <li><Link className="dropdown-item" to="#">Another action</Link></li>
+                                <li><Link className="dropdown-item" to="#">Something else here</Link></li>
+                                <li><Link className="dropdown-item" to="#">Log out</Link></li>
                             </ul>
                         </div>
                     </div>
