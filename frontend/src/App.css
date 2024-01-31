@@ -107,7 +107,7 @@
 
 #otp {
   margin: 10px;
-  width: 40%;
+  width: 50%;
   height: 4.4vh;
   border-radius: 7px;
   background-color: #E8E5E4;
@@ -131,6 +131,11 @@
 .forgot {
   text-align: end;
   width: 83%;
+}
+
+.frgt:hover {
+  color: white;
+  text-decoration: underline;
 }
 
 /* CSS */
@@ -158,8 +163,8 @@
 }
 
 #send_otp {
-  width: 28%;
-  padding: 6px 1px !important;
+  width: inherit;
+  /* padding: 6px 1px !important; */
 }
 
 #new_pass {
@@ -257,26 +262,29 @@ button:hover {
   display: none;
 }
 
-.cross {
-  /* position: relative; */
-  /* right: 0; */
-  /* display: flex; */
-  /* height: 25px;
-  width: 20px; */
+.hamburger {
+  border-radius: 7px;
+  margin-left: 2.3px;
 }
 
-.animate_sidebar {
 
-}
-
-.lists ul li{
+.lists ul li {
   cursor: pointer;
   list-style: none;
 }
 
+@media screen and(width>850px) {
+  .hamburger {
+    display: none;
+  }
 
-/* navbar */
-.bg_clr{
-  background-color: #5B5A5F !important;
+  .sidebar {
+    display: block;
+  }
+
 }
 
+/******************* navbar *********************/
+.bg_clr {
+  background-color: #5B5A5F !important;
+}

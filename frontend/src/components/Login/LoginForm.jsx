@@ -17,21 +17,18 @@ export default function LoginForm() {
 
                 <div className="formlogin">
                     <form action="" method='POST'>
-                        <input type="text" name="username" id="" placeholder='Enter your Username' />
+                        <input className='focus-ring focus-ring-light' type="text" name="username" id="" placeholder='Enter your Username' />
                         <br />
-                        <input type="password" name="password" id="" placeholder='Enter your password' />
+                        <input type="password" className='focus-ring focus-ring-light' name="password" id="" placeholder='Enter your password' />
                         <br />
                         <div className="forgot">
-
-                            <Link to="/forgot" >Forgot Password ?</Link>
+                            <Link to="/forgot" className='frgt' >Forgot Password ?</Link>
                         </div>
                         <br />
-                        <button type="submit" onClick={(e)=> e.preventDefault()}>Submit</button>
+                        <button type="submit" className='btn btn-light' onClick={(e) => e.preventDefault()}>Submit</button>
                     </form>
                 </div>
-
             </div>
-
         </>
     )
 }

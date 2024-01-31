@@ -19,7 +19,7 @@ function Sidebar() {
             <aside>
                 <div className="sidebar">
                     <div className="cross d-flex justify-content-end">
-                        <button className='btn-close' onClick={hide_sidebar}>
+                        <button className='btn' onClick={hide_sidebar}>
 
                             <i className="fa-solid fa-xmark fa-xl text-white"></i>
                         </button>
@@ -37,8 +37,9 @@ function Sidebar() {
                         </ul>
                     </div>
                 </div>
-                <div className="hamburger display-none mt-1 position-absolute bg-dark " onClick={show_sidebar}>
-                    <button className='btn text-white'>
+                <div className="hamburger display-none  mt-1 position-absolute bg-dark"
+                 onClick={show_sidebar}>
+                    <button className='btn text-white '>
 
                         <i className="fa-solid fa-bars fa-xl"></i>
                     </button>

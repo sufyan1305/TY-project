@@ -17,16 +17,16 @@ export default function ForgotPassword() {
 
         <div className="formlogin">
           <form action="" method='POST'>
-            <input type="text" name="" id="" placeholder='Enter your Username' />
+            <input type="text"className='focus-ring focus-ring-light' name="" id="" placeholder='Enter your Username' />
             <br />
-            <input type="password" name="" id="" placeholder='Enter your Mobile Number' />
+            <input type="password"className='focus-ring focus-ring-light' name="" id="" placeholder='Enter your Mobile Number' />
             <br />
-            <input type="text" name="" id="otp"  placeholder='Enter OTP'/>
-            <button id='send_otp'>
+            <input type="text" className='focus-ring focus-ring-light' name="" id="otp"  placeholder='Enter OTP'/>
+            <button id='send_otp' className='btn btn-light btn-sm '>
               Send OTP
             </button>
             <br />
-            <button type="submit" id='submit_form'>Submit</button>
+            <button type="submit" className='btn btn-light' id='submit_form'>Submit</button>
           </form>
         </div>
 

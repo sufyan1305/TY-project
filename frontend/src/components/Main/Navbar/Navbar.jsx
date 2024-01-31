@@ -36,7 +36,7 @@ function Navbar() {
                             </form>
                         </div>
 
-                        <div className="dropdown d-flex justify-content-center" >
+                        <div className="dropdown d-flex justify-content-center " >
                             <Link className="btn btn-secondary dropdown-toggle me-3 ms-3 border border-3 text-black bg-light" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src={dev} alt="" height={30} width={40} className='dev_round' />
                                 Dropdown link

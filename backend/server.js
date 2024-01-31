@@ -20,16 +20,15 @@ app.use(express.json());
 
 
 // app.get('/', (req, res) => {
-  //   res.send('Hello World!')
-  // })
-  
-  
-  app.get('/api',(req,res)=>{
-    return res.json({message:"Connected...."})
-  })
-  
-  app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-  })
-  // connection.end()
-  
+//   res.send('Hello World!')
+// })
+
+
+app.get('/api', (req, res) => {
+  return res.json({ message: "Connected...." })
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+})
+// connection.end()
