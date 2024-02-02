@@ -1,7 +1,7 @@
 // import React,{useEffect,useState} from 'react'
 import { Link } from 'react-router-dom';
 import dev from '../../../assets/dev_icon.jpeg'
-// import axios from 'axios'
+import axios from 'axios'
 
 function Navbar() {
 

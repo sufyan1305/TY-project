@@ -6,6 +6,7 @@ import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import LoginForm from './components/Login/LoginForm';
 import SetNewPassword from './components/SetNewPassword/SetNewPassword';
 import Dashboard from './components/Main/Dashboard/Dashboard';
+import DemoForm from './components/DemoForm/DemoForm';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='newpass' element={<SetNewPassword />} />
         </Route>
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/demo' element={<DemoForm />} />
 
       </Routes>
     </BrowserRouter>
