@@ -4,6 +4,7 @@ const port = 8081
 const mysql = require('mysql')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
+require('dotenv').config()
 const salt = 10;
 
 const con = mysql.createConnection({
@@ -16,11 +17,12 @@ const con = mysql.createConnection({
 
 app.use(cors());
 app.use(express.json());
-// connection.connect()
 
+// con.connect()
 
+const verify_secret = (token) => {
 
-
+}
 // app.get('/', (req, res) => {
 //   res.send('Hello World!')
 // })
@@ -33,12 +35,13 @@ app.get('/api', (req, res) => {
   return res.json({ message: "Connected...." })
 })
 
+//sign up
 app.post('/demo', (req, res) => {
   const sql = "INSERT INTO `users` (`User_id`, `Password`, `First_Name`, `Last_Name`, `Email`, `Mobile_number`, `User_type`, `Date`) VALUES (?, ?, '', '', '', '', '', current_timestamp()) ";
 
   bcrypt.hash(req.body.password.toString(), salt, (err, hash) => {
 
-    if(err) return res.json({Error:"Cannot hashed password..."})
+    if (err) return res.json({ Error: "Cannot hashed password..." })
 
     const values = [
       req.body.username,
@@ -46,38 +49,39 @@ app.post('/demo', (req, res) => {
     ]
 
     con.query(sql, values, (err, result) => {
-      if(err) return res.json({Error:"Cannot insert data..."})
+      if (err) return res.json({ Error: "Cannot insert data..." })
 
-      return res.json({Status:"Success"})
+      return res.json({ Status: "Success" })
     })
   })
 
 })
 
 //login
-app.post('/',(req,res)=>{
-      const sql = "SELECT * FROM users where User_id = ?";
-      con.query(sql,[req.body.username],(err,result)=>{
-        if(err) return res.json({Error:"Login internal server error..."})
+app.post('/', (req, res) => {
+  const sql = "SELECT * FROM users where User_id = ?";
+  con.query(sql, [req.body.username], (err, result) => {
+    if (err) return res.json({ Error: "Login internal server error..." })
 
-        if (result.length>0) {
-          bcrypt.compare(req.body.password.toString(),result[0].Password,(err,response)=>{
-            if(err) return res.json({Error:"Invalid password..."})
+    if (result.length > 0) {
+      bcrypt.compare(req.body.password.toString(), result[0].Password, (err, response) => {
+        if (err) return res.json({ Error: "Invalid password..." })
 
-            if (response) {
-              return res.json({Status:"Success"})
-            }
-            else{
-              return res.json({Error:"Password didn't match..."})
-
-            }
-          })
+        if (response) {
+          return res.json({ Status: "Success" })
         }
-        else{
-          return res.json({Error:"Invald username..."})
+        else {
+          return res.json({ Error: "Password didn't match..." })
+
         }
       })
+    }
+    else {
+      return res.json({ Error: "Invald username..." })
+    }
+  })
 })
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 })
