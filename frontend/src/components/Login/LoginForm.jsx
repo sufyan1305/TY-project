@@ -10,13 +10,22 @@ export default function LoginForm() {
         password: ""
     });
 
+    //  const [auth, setauth] = React.useState(false)
     const navigate = useNavigate()
+
+    axios.defaults.withCredentials = true;
 
     const login = (e) => {
         e.preventDefault();
+        // let login = false;
 
+        // if(!login)
+        // {
+        window.localStorage.setItem("loggedIn", true)
+       
         axios.post("http://localhost:8081/", data)
             .then((res) => {
+
                 if (res.data.Status === "Success") {
                     navigate('/dashboard')
                 }
@@ -25,7 +34,13 @@ export default function LoginForm() {
                 }
             })
             .catch((err) => console.log(err))
+        // }
+        // else{
+        //     axios.get('')
+        // }
     }
+
+
     return (
         <>
             <div className="right-inner">
@@ -38,11 +53,11 @@ export default function LoginForm() {
                 </div>
 
                 <div className="formlogin">
-                    <form action="" method='POST' onSubmit={login}>
-                        <input className='focus-ring focus-ring-light' type="text" name="username" id="" placeholder='Enter your Username'
+                    <form action="" method='POST' onSubmit={(e) => login(e)}>
+                        <input className='focus-ring focus-ring-light' type="text" name="username" placeholder='Enter your Username'
                             onChange={e => setdata({ ...data, username: e.target.value })} />
                         <br />
-                        <input type="password" className='focus-ring focus-ring-light' name="password" id="" placeholder='Enter your password'
+                        <input type="password" className='focus-ring focus-ring-light' name="password" placeholder='Enter your password'
                             onChange={e => setdata({ ...data, password: e.target.value })} />
                         <br />
                         <div className="forgot">

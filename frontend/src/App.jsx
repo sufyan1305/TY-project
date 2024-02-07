@@ -7,21 +7,37 @@ import LoginForm from './components/Login/LoginForm';
 import SetNewPassword from './components/SetNewPassword/SetNewPassword';
 import Dashboard from './components/Main/Dashboard/Dashboard';
 import DemoForm from './components/DemoForm/DemoForm';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 function App() {
+  const isLogin = window.localStorage.getItem("loggedIn");
+
+
   return (
-
     <BrowserRouter>
-
       <Routes>
-        <Route path='/' element={<CommnBg />} >
-          <Route path='' element={<LoginForm />} />
+        <Route path='/' element={ !isLogin && <CommnBg />} >
+          <Route path='' element={ !isLogin && <LoginForm />} />
+          {/* <Route path='/' element= {
+            <PrivateRoute>
+              <CommnBg/>
+            </PrivateRoute>
+          }>
+          <Route path='' element= {
+            <PrivateRoute>
+              <LoginForm/>
+            </PrivateRoute>
+          }/> */}
           <Route path='forgot' element={<ForgotPassword />} />
           <Route path='newpass' element={<SetNewPassword />} />
         </Route>
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/demo' element={<DemoForm />} />
-
+        <Route path='dashboard' element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        } />
+        
+        <Route path='demo' element={<DemoForm />} />
       </Routes>
     </BrowserRouter>
 

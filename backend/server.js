@@ -4,6 +4,8 @@ const port = 8081
 const mysql = require('mysql')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const cookieParser = require('cookie-parser')
 require('dotenv').config()
 const salt = 10;
 
@@ -14,14 +16,29 @@ const con = mysql.createConnection({
   database: 'theka_coffee'
 });
 
-
-app.use(cors());
+app.use(cookieParser())
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ["POST", "GET"],
+  credentials: true
+}));
 app.use(express.json());
 
+
+// app.use((req,res,next)=>{
+//   res.setHeader("dashboard","/dashboard")
+// })
 // con.connect()
+const verifyUser = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) return res.json({ Error: "You are not authorized..." })
 
-const verify_secret = (token) => {
+  jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+    if (err) return res.json({ Error: "Invalid token" })
 
+    req.User_Id = decoded.User_Id;
+    next()
+  })
 }
 // app.get('/', (req, res) => {
 //   res.send('Hello World!')
@@ -59,6 +76,7 @@ app.post('/demo', (req, res) => {
 
 //login
 app.post('/', (req, res) => {
+  
   const sql = "SELECT * FROM users where User_id = ?";
   con.query(sql, [req.body.username], (err, result) => {
     if (err) return res.json({ Error: "Login internal server error..." })
@@ -68,6 +86,11 @@ app.post('/', (req, res) => {
         if (err) return res.json({ Error: "Invalid password..." })
 
         if (response) {
+          const token = jwt.sign({ 'username': result[0].User_Id }, process.env.SECRET_KEY, { expiresIn: '10h' })
+         
+          res.cookie('token', token)
+          // res.append(Path2D = "")
+          // window.localStorage.setItem("loggedIn", "true")
           return res.json({ Status: "Success" })
         }
         else {
@@ -82,8 +105,13 @@ app.post('/', (req, res) => {
   })
 })
 
+// app.post('/logout',verifyUser,(req,res)=>{
+//     res.clearCookie('token');
+//     res.end()
+// })
+
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Example app listening on port http://localhost/${port}`);
 })
 
 

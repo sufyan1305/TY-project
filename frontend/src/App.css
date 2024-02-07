@@ -255,7 +255,6 @@ button:hover {
   width: 220px;
   height: 90.5vh;
   margin-top: 3px;
-  transition: all 2s linear;
 }
 
 .display-none {
