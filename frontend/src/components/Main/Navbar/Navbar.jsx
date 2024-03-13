@@ -11,7 +11,6 @@ function Navbar() {
     //   .then((res)=> setdata(res.data))
     // }, [])
 
-
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary bg_clr" data-bs-theme="dark" style={{backgroundColor:"#5A595E"}} >

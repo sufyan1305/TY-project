@@ -1,45 +1,63 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 import user_logo3 from '../../assets/user_logo3.jpeg'
-
+import { useForm } from "react-hook-form"
 
 export default function LoginForm() {
-    const [data, setdata] = React.useState({
-        username: "",
-        password: ""
-    });
+    // const [data, setdata] = React.useState({
+    //     username: "",
+    //     password: ""
+    // });
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors, isSubmitting },
+    } = useForm()
 
-    //  const [auth, setauth] = React.useState(false)
+
+    const [iswrong, setWrong] = useState(false)
+    //const [auth, setauth] = React.useState(false)
     const navigate = useNavigate()
 
     axios.defaults.withCredentials = true;
 
-    const login = (e) => {
-        e.preventDefault();
-        // let login = false;
+    // const login = (e) => {
+    //     e.preventDefault();
+    //     axios.post("http://localhost:8081/", data)
+    //     .then((res) => {
+    //         if (res.data.Status === "Success") {
+    //                 window.localStorage.setItem("loggedIn", true)
+    //                 setWrong(false)
+    //                 navigate('/dashboard')
+    //             }
+    //             else {
+                    // alert(res.data.Error)
+    //                 toast.error("Invalid credentials...")
+    //                 setWrong(true)
+    //             }
+    //         })
+    //         .catch((err) => console.log(err))
+    // }
 
-        // if(!login)
-        // {
-        window.localStorage.setItem("loggedIn", true)
-       
+    const login = (data) => {
         axios.post("http://localhost:8081/", data)
             .then((res) => {
-
                 if (res.data.Status === "Success") {
+                    window.localStorage.setItem("loggedIn", true)
+                    setWrong(false)
                     navigate('/dashboard')
                 }
                 else {
-                    alert(res.data.Error)
+                    // alert(res.data.Error)
+                    toast.error("Invalid credentials...")
+                    setWrong(true)
                 }
             })
             .catch((err) => console.log(err))
-        // }
-        // else{
-        //     axios.get('')
-        // }
     }
-
 
     return (
         <>
@@ -52,19 +70,22 @@ export default function LoginForm() {
                     <img src={user_logo3} alt="logo" />
                 </div>
 
+
                 <div className="formlogin">
-                    <form action="" method='POST' onSubmit={(e) => login(e)}>
-                        <input className='focus-ring focus-ring-light' type="text" name="username" placeholder='Enter your Username'
-                            onChange={e => setdata({ ...data, username: e.target.value })} />
+
+                    <form action="" method='POST' onSubmit={handleSubmit(login)} >
+                        <input className='focus-ring focus-ring-light' type="text" placeholder='Enter your Username'
+                        {...register("username")}  />
                         <br />
                         <input type="password" className='focus-ring focus-ring-light' name="password" placeholder='Enter your password'
-                            onChange={e => setdata({ ...data, password: e.target.value })} />
+                           {...register("password")}  />
                         <br />
                         <div className="forgot">
                             <Link to="/forgot" className='frgt' >Forgot Password ?</Link>
                         </div>
                         <br />
-                        <button type="submit" className='btn btn-light' >Submit</button>
+                        <button disabled={isSubmitting}type="submit" className='btn btn-light'>Submit</button>
+                        <Toaster />
                     </form>
                 </div>
             </div>

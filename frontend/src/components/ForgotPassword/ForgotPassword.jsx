@@ -1,11 +1,21 @@
-import React from 'react'
 import user_logo3 from '../../assets/user_logo3.jpeg'
-
+import { useForm } from "react-hook-form"
+import axios from 'axios'
 
 export default function ForgotPassword() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm()
+
+  const forgot_password = (data) => {
+      
+  }
+
   return (
     <>
-
       <div className="right-inner">
         <h1>
           Forgot Password
@@ -16,17 +26,23 @@ export default function ForgotPassword() {
         </div>
 
         <div className="formlogin">
-          <form action="" method='POST'>
-            <input type="text"className='focus-ring focus-ring-light' name="" id="" placeholder='Enter your Username' />
+          <form action="" method='POST' onSubmit={handleSubmit(forgot_password)}>
+            <input type="text" className='focus-ring focus-ring-light'
+              {...register("username")}
+              placeholder='Enter your Username' />
             <br />
-            <input type="password"className='focus-ring focus-ring-light' name="" id="" placeholder='Enter your Mobile Number' />
-            <br />
-            <input type="text" className='focus-ring focus-ring-light' name="" id="otp"  placeholder='Enter OTP'/>
-            <button id='send_otp' className='btn btn-light btn-sm '>
+            <input type="tel" className='focus-ring focus-ring-light'
+              style={{ width: "13.5vw" }}
+              {...register("mobile_number")}
+              placeholder='Enter your Mobile Number' />
+
+            <button id='send_otp' disabled={isSubmitting} className='btn btn-light btn-sm '>
               Send OTP
             </button>
+            {/* <br /> */}
+            <input type="text" className='focus-ring focus-ring-light' {...register("otp")} id="otp" placeholder='Enter OTP' />
             <br />
-            <button type="submit" className='btn btn-light' id='submit_form'>Submit</button>
+            <button type="submit" disabled={isSubmitting} className='btn btn-light' id='submit_form'>Submit</button>
           </form>
         </div>
 

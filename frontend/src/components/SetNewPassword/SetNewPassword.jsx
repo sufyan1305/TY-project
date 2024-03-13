@@ -1,7 +1,23 @@
-import React from 'react'
 import user_logo3 from '../../assets/user_logo3.jpeg'
+import { useForm } from "react-hook-form"
+import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast'
 
 export default function SetNewPassword() {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors,isSubmitting },
+    } = useForm()
+
+    const change_password =  (data) => {
+        console.log(data)
+        axios.post("http://localhost:8081/newpass",data)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))  
+    }
+
     return (
         <>
             <div className="right-inner">
@@ -10,17 +26,18 @@ export default function SetNewPassword() {
                 </h2>
 
                 <div className="user-logo mt-5">
-                    <img src={user_logo3} className='img-fluid'alt="logo" />
+                    <img src={user_logo3} className='img-fluid' alt="logo" />
                 </div>
 
                 <div className="formlogin">
-                    <form action="" method='POST'>
-                        <input type="password" className='focus-ring focus-ring-light' name="" id="" placeholder='Enter new password' />
+                    <form action="" method='POST' onSubmit={handleSubmit(change_password)}>
+                        <input type="password" className='focus-ring focus-ring-light' {...register("password",{minLength:{value:3,message:"Minimum length is 3"}})} placeholder='Enter new password' />
                         <br />
-                        <input type="text" className='focus-ring focus-ring-light' name="" id="" placeholder='Re-enter password' />
+                        <input type="password" className='focus-ring focus-ring-light' placeholder='Re-enter password' {...register("conpassword")} />
                         <br />
                         <br />
-                        <button type="submit" id='setnewpass' className='btn btn-light btn-sm '>Change Password</button>
+                        <button disabled={isSubmitting} type="submit" id='setnewpass' className='btn btn-light btn-sm '>Change Password</button>
+                        {isSubmitting && <Toaster/>}
                     </form>
                 </div>
 

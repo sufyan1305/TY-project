@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {NavLink } from 'react-router-dom'
 function Sidebar() {
 
     const hide_sidebar = () => {
@@ -7,7 +7,7 @@ function Sidebar() {
         document.querySelector('.hamburger').style.display = "block";
         // document.querySelector('.sidebar').classList.add("animate-sidebar");
     }
-    
+
     const show_sidebar = () => {
         document.querySelector('.sidebar').style.display = "block";
         // document.querySelector('.sidebar').classList.add("animate-sidebar");
@@ -27,18 +27,19 @@ function Sidebar() {
 
                     <div className="lists text-light">
                         <ul className='list_text m-4'>
-                            <li className=''>Dashboard</li>
+                            <li className=''> <NavLink to='/dashboard' className='link'>Dashboard</NavLink></li>
+                            <li className=''> <NavLink to='/add-user' className='link'>Add user</NavLink></li>
+                            {/* <li>Dashboard</li>
                             <li>Dashboard</li>
                             <li>Dashboard</li>
                             <li>Dashboard</li>
                             <li>Dashboard</li>
-                            <li>Dashboard</li>
-                            <li>Dashboard</li>
+                            <li>Dashboard</li> */}
                         </ul>
                     </div>
                 </div>
                 <div className="hamburger display-none  mt-1 position-absolute bg-dark"
-                 onClick={show_sidebar}>
+                    onClick={show_sidebar}>
                     <button className='btn text-white '>
 
                         <i className="fa-solid fa-bars fa-xl"></i>

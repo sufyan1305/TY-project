@@ -8,14 +8,7 @@ function DemoForm() {
         username: "",
         password: ""
     });
-
     const navigate = useNavigate()
-    // useEffect(() => {
-    //     axios.post("http://localhost:8081/demo")
-    //         .then((res) => setdata(res.data))
-    //         .catch((err) => console.log(err))
-    //     }, []);
-
     const signUp = (e) => {
         e.preventDefault();
         axios.post("http://localhost:8081/demo", data)

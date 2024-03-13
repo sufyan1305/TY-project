@@ -2,24 +2,17 @@ import React from 'react'
 import Navbar from '../Navbar/Navbar'
 import Sidebar from '../Sidebar/Sidebar'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { useCookies } from 'react-cookie';
 function Dashboard() {
   const navigate = useNavigate()
   const [cookie, setCookie, removeCookie] = useCookies();
+  
   const logout = (e) => {
     removeCookie("token")
     e.preventDefault();
-    // Cookies.remove('token')
-    // axios.post("http://localhost:8081/logout")
-    //   .then(
-    //     console.log("Logged out")
-
-    //   )
-    //   .catch((err) => console.log(err))
-
-    window.localStorage.removeItem("loggedIn");
-    navigate("/")
+    window.localStorage.clear();
+    window.location.reload();
+    navigate("/");
   }
 
   return (
