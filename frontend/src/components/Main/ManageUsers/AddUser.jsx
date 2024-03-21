@@ -52,7 +52,7 @@ function AddUser() {
       </div>
       <div className="container add_user_form ">
         <div className="adding_user container_fluid p-5 mx-5">
-          <form className="row g-4 needs-validation" method="POST"  onSubmit={handleSubmit(add_user)} >
+          <form className="row g-4 needs-validation" method="POST" onSubmit={handleSubmit(add_user)} >
             <div className="col-md-5">
               <label htmlFor="firstname" className="form-label font-weight-bold">First Name</label>
               <input type="text" className="form-control"  {...register("firstname")} />
@@ -83,7 +83,7 @@ function AddUser() {
             </div>
             <div className="col-md-5">
               <label htmlFor="mobilenumber" className="form-label">Mobile Number</label>
-              <input type="tel" className="form-control" {...register("mobilenumber",{pattern:{value:/^[0-9]+$/},required:true})}  />
+              <input type="tel" className="form-control" {...register("mobilenumber", { pattern: { value: /^[0-9]+$/ }, required: true })} />
             </div>
             <div className="col-md-5">
               <label htmlFor="email" className="form-label">Email</label>

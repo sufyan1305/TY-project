@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import './App.css';
 import CommnBg from './components/BackgroundLogin/CommnBg';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -13,13 +13,11 @@ import AddWarehouse from './components/Main/ManageWarehouse/AddWarehouse'
 
 function App() {
   const isLogin = window.localStorage.getItem("loggedIn");
-
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={ isLogin? <Dashboard/> :  <CommnBg />} >
-          <Route path='' element={  isLogin? <Dashboard/> :  <LoginForm />}/>
+        <Route path='/' element={isLogin ? <Dashboard /> : <CommnBg />} >
+          <Route path='' element={isLogin ? <Dashboard /> : <LoginForm />} />
           <Route path='forgot' element={<ForgotPassword />} />
           <Route path='newpass' element={<SetNewPassword />} />
         </Route>
@@ -29,8 +27,8 @@ function App() {
           </PrivateRoute>
         } />
         <Route path='demo' element={<DemoForm />} />
-        <Route path='add-user' element={<AddUser/>}/>
-        <Route path='add-warehouse' element={<AddWarehouse/>}/>
+        <Route path='add-user' element={<AddUser />} />
+        <Route path='add-warehouse' element={<AddWarehouse />} />
       </Routes>
     </BrowserRouter>
 
@@ -38,4 +36,3 @@ function App() {
 }
 
 export default App
-

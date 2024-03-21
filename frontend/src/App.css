@@ -251,15 +251,20 @@ button:hover {
 /********************* Sidebar *********************/
 
 .sidebar {
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 2; /* Stay at the top */
+  position: fixed;
+  /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1;
+  /* Stay on top */
+  top: 2;
+  /* Stay at the top */
   left: 0;
   padding-top: 20px;
   background-color: rgb(47, 53, 65);
   width: 220px;
   height: 90.5vh;
   margin-top: 3px;
+  transition: all 0.1s ease-in-out 0.2s;
+  
 }
 
 .display-none {
@@ -275,13 +280,12 @@ button:hover {
 .lists ul li {
   cursor: pointer;
   list-style: none;
-  
 }
 
- .lists ul li .link{
-  text-decoration: none ;
+.lists ul li .link {
+  text-decoration: none;
   color: white;
- }
+}
 
 @media screen and(width>850px) {
   .hamburger {
@@ -300,18 +304,19 @@ button:hover {
 }
 
 /********* Add user form ******/
-.add_user_top{
+.add_user_top {
   overflow: hidden;
   width: 85vw;
   height: 150px;
   /* margin-left:15vw; */
-  margin-left: 225px; /* Same as the width of the sidebar */
+  margin-left: 225px;
+  /* Same as the width of the sidebar */
   padding: 0px 10px;
   margin-top: 3px;
   background-color: rgb(33, 184, 33);
 }
 
-.add_user_form{
+.add_user_form {
   margin-top: -25px;
   z-index: 2;
   margin-left: 260px;
@@ -322,8 +327,8 @@ button:hover {
 }
 
 @media screen and (width<765px) {
-  .add_user_form{
+  .add_user_form {
     height: 90vh;
   }
-  
+
 }
