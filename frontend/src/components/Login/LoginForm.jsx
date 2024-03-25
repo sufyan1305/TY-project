@@ -4,6 +4,8 @@ import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import user_logo3 from '../../assets/user_logo3.jpeg'
 import { useForm } from "react-hook-form"
+import {  useDispatch } from "react-redux"
+import { setUsername } from '../redux/username/usernameSlice'
 
 export default function LoginForm() {
     // const [data, setdata] = React.useState({
@@ -17,7 +19,7 @@ export default function LoginForm() {
         formState: { errors, isSubmitting },
     } = useForm()
 
-
+    const dispatch = useDispatch();
     const [iswrong, setWrong] = useState(false)
     //const [auth, setauth] = React.useState(false)
     const navigate = useNavigate()
@@ -43,9 +45,11 @@ export default function LoginForm() {
     // }
 
     const login = (data) => {
+        dispatch(setUsername(data.username))
         axios.post("http://localhost:8081/", data)
             .then((res) => {
                 if (res.data.Status === "Success") {
+                    console.log(data.username);
                     window.localStorage.setItem("loggedIn", true)
                     setWrong(false)
                     navigate('/dashboard')
